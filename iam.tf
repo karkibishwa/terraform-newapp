@@ -14,11 +14,11 @@ data "aws_iam_policy_document" "default" {
   }
 }
 resource "aws_iam_policy" "default" {
-  name   = "terraform-s3-access-helloapp"
+  name   = "terraform-s3-access-newapp"
   policy = "${data.aws_iam_policy_document.default.json}"
 }
 resource "aws_iam_role" "default" {
-  name = "terraform-s3-access-helloapp"
+  name = "terraform-s3-access-newapp"
   assume_role_policy = <<EOF
 {
       "Version": "2012-10-17",
@@ -40,6 +40,6 @@ resource "aws_iam_role_policy_attachment" "default" {
   policy_arn = "${aws_iam_policy.default.arn}"
 }
 resource "aws_iam_instance_profile" "default" {
-  name = "terraform-s3-access-helloapp"
+  name = "terraform-s3-access-newapp"
   role = "${aws_iam_role.default.name}"
 } 
